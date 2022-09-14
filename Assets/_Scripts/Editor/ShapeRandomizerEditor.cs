@@ -1,21 +1,41 @@
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(ShapeConfig))]
+[CustomEditor(typeof(ShapeRandomizer))]
 [CanEditMultipleObjects]
-public class ShapeConfigEditor : Editor
+public class ShapeConEditor : Editor
 {
-   private ShapeConfig shape;
+   private ShapeRandomizer shape;
+   [SerializeField ]private bool showProperties;
 
    private void OnEnable()
    {
-      shape = target as ShapeConfig;
+      shape = target as ShapeRandomizer;
    }
 
    public override void OnInspectorGUI()
    {
-      base.OnInspectorGUI();
+      if (!showProperties)
+      {
+         if (GUILayout.Button("Show Properties"))
+         {
+            showProperties = true;
+         }
+      }
+      
+      if (showProperties)
+      {
+         if (GUILayout.Button("Hide Properties"))
+         {
+            showProperties = false;
+         }
+      }
 
+      if (showProperties)
+      {
+         base.OnInspectorGUI();
+      }
+      
       EditorGUILayout.Space();
       EditorGUILayout.Space();
       EditorGUILayout.LabelField("Randomization Fields", EditorStyles.boldLabel);

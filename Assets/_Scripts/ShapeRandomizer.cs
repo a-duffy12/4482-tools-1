@@ -4,7 +4,7 @@ using UnityEngine;
 
 [System.Serializable]
 [ExecuteInEditMode]
-public class ShapeConfig : MonoBehaviour
+public class ShapeRandomizer : MonoBehaviour
 {
     [Header("Shape Properties")]
     [SerializeField] float posX;
